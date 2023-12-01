@@ -34,11 +34,11 @@ public class Calculator : MonoBehaviour {
 
 		//Handles button input values
 		switch (s) {
-				case "+":
-				case "-":
-				case "/":
-				case "*":
-				case "=":
+			case "+":
+			case "-":
+			case "/":
+			case "*":
+			case "=":
 				Calculate(s);
 				break;
 			case "ce":
@@ -50,11 +50,29 @@ public class Calculator : MonoBehaviour {
 			case "del":
 				DeleteLastCharacter();
 				break;
+			case "power":
+				Power();
+				break;
+			case "root":
+				Root();
+				break;
 			default:
 				AddCharacter(s);
 				break;
 		}
 	} 
+
+	void Power() {
+		float input = Convert.ToSingle(_input.text);
+		float output = input * input;
+		_result.text = output.ToString();
+	}
+
+	void Root() {
+		float input = Convert.ToSingle(_input.text);
+		float output = Mathf.Sqrt(input);
+		_result.text = output.ToString(); 
+	}
 
 	//Prepare values before the calculation
 	private void Calculate(string s){
